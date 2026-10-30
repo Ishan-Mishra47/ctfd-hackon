@@ -1,0 +1,256 @@
+@use "bootstrap/scss/bootstrap" as * with (
+  $info: #5c728f
+);
+
+@use "includes/components/table";
+@use "includes/components/jumbotron";
+@use "includes/components/challenge";
+@use "includes/components/sticky-footer";
+@use "includes/components/graphs";
+
+@use "includes/utils/fonts";
+@use "includes/utils/opacity";
+@use "includes/utils/min-height";
+@use "includes/utils/cursors";
+@use "includes/utils/lolight";
+
+@use "includes/icons/award-icons";
+@use "includes/icons/flag-icons";
+
+h1,
+h2 {
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+blockquote {
+  border-left: 4px solid $secondary;
+  padding-left: 15px;
+}
+
+input,
+select {
+  padding: 0.6rem !important;
+  height: auto !important;
+}
+
+.fa-spin.spinner {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.badge-notification {
+  vertical-align: top;
+  margin-left: -1.5em;
+  font-size: 50%;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+  background-size: 8px 10px;
+}
+html,
+body,
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+  /* Core Page Surface: Deep Black (#111111) + Greyish-White Text (#dcdcdc) */
+  background-color: #111111;
+  color: #dcdcdc;
+  --theme-color: #dcdcdc;
+
+  --bs-body-bg: #111111;
+  --bs-body-bg-rgb: 17, 17, 17;
+  --bs-body-color: #e0e0e0;
+  --bs-body-color-rgb: 220, 220, 220;
+
+  /* Crisp White for Peak Emphasis */
+  --bs-emphasis-color: #0b0b0b;
+  --bs-emphasis-color-rgb: 255, 255, 255;
+
+  /* Secondary & Tertiary Surfaces (Pure Black to Greyish-White Scale) */
+  --bs-secondary-bg: #181818;
+  --bs-secondary-bg-rgb: 24, 24, 24;
+  --bs-secondary-color: #b5b5b5;
+  --bs-secondary-color-rgb: 181, 181, 181;
+
+  --bs-tertiary-bg: #222222;
+  --bs-tertiary-bg-rgb: 34, 34, 34;
+  --bs-tertiary-color: #8c8c8c;
+  --bs-tertiary-color-rgb: 140, 140, 140;
+
+  /* Borders & Dividers */
+  --bs-border-color: #2e2e2e;
+  --bs-border-color-translucent: rgba(220, 220, 220, 0.15);
+
+  /* Raw Palette Stripped to Pure Black, White, & Greyish-White */
+  --bs-blue: #dcdcdc;
+  --bs-indigo: #d4d4d4;
+  --bs-purple: #cccccc;
+  --bs-pink: #c2c2c2;
+  --bs-red: #b5b5b5;
+  --bs-orange: #cccccc;
+  --bs-yellow: #e0e0e0;
+  --bs-green: #28a745; /* Preserved for Solve indicators */
+  --bs-teal: #d4d4d4;
+  --bs-cyan: #dcdcdc;
+  --bs-black: #000000;
+  --bs-white: #ffffff;
+  --bs-gray: #999999;
+  --bs-gray-dark: #1a1a1a;
+  --bs-gray-100: #f2f2f2;
+  --bs-gray-200: #e6e6e6;
+  --bs-gray-300: #dcdcdc;
+  --bs-gray-400: #cccccc;
+  --bs-gray-500: #b5b5b5;
+  --bs-gray-600: #8c8c8c;
+  --bs-gray-700: #4d4d4d;
+  --bs-gray-800: #222222;
+  --bs-gray-900: #111111;
+
+  /* Semantic Theme Colors (Strict Monochrome except Success/Solves) */
+  --bs-primary: #dcdcdc;        /* Greyish-white primary accent */
+  --bs-primary-rgb: 220, 220, 220;
+  --bs-secondary: #8c8c8c;      /* Neutral mid-grey */
+  --bs-secondary-rgb: 140, 140, 140;
+  --bs-success: #28a745;        /* Preserved solve green */
+  --bs-success-rgb: 40, 167, 69;
+  --bs-info: #e0e0e0;           /* Greyish-white tags & info */
+  --bs-info-rgb: 224, 224, 224;
+  --bs-warning: #cccccc;        /* Greyish-white warnings */
+  --bs-warning-rgb: 204, 204, 204;
+  --bs-danger: #333333;         /* Deep charcoal for wrong/error states */
+  --bs-danger-rgb: 51, 51, 51;
+  --bs-light: #e6e6e6;          /* Greyish-white light utility */
+  --bs-light-rgb: 230, 230, 230;
+  --bs-dark: #dcdcdc;           /* Maps .bg-dark (Navbar) directly to greyish-white */
+  --bs-dark-rgb: 220, 220, 220;
+
+  /* Semantic Subtle Backgrounds */
+  --bs-primary-bg-subtle: #1f1f1f;
+  --bs-secondary-bg-subtle: #171717;
+  --bs-success-bg-subtle: rgba(40, 167, 69, 0.15); /* Solve alert fill */
+  --bs-info-bg-subtle: #1f1f1f;
+  --bs-warning-bg-subtle: #1a1a1a;
+  --bs-danger-bg-subtle: #141414;
+  --bs-light-bg-subtle: #262626;
+  --bs-dark-bg-subtle: #0a0a0a;
+
+  /* Semantic Subtle Borders */
+  --bs-primary-border-subtle: #dcdcdc;
+  --bs-secondary-border-subtle: #4d4d4d;
+  --bs-success-border-subtle: #28a745; /* Solve alert border */
+  --bs-info-border-subtle: #cccccc;
+  --bs-warning-border-subtle: #b5b5b5;
+  --bs-danger-border-subtle: #4d4d4d;
+  --bs-light-border-subtle: #e0e0e0;
+  --bs-dark-border-subtle: #262626;
+
+  /* Semantic Text Emphasis */
+  --bs-primary-text-emphasis: #ffffff;
+  --bs-secondary-text-emphasis: #dcdcdc;
+  --bs-success-text-emphasis: #5dd879; /* Solve alert text */
+  --bs-info-text-emphasis: #ffffff;
+  --bs-warning-text-emphasis: #e0e0e0;
+  --bs-danger-text-emphasis: #cccccc;
+  --bs-light-text-emphasis: #ffffff;
+  --bs-dark-text-emphasis: #111111;
+
+  /* Links, Code, Highlights & Focus Rings */
+  --bs-link-color: #ffffff;
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color: #cccccc;
+  --bs-link-hover-color-rgb: 204, 204, 204;
+  --bs-code-color: #e0e0e0;
+  --bs-highlight-color: #000000;
+  --bs-highlight-bg: #dcdcdc;
+  --bs-focus-ring-color: rgba(220, 220, 220, 0.25);
+  --bs-form-valid-color: #28a745;
+  --bs-form-valid-border-color: #28a745;
+  --bs-form-invalid-color: #cccccc;
+  --bs-form-invalid-border-color: #cccccc;
+}
+
+/* 1. Greyish-White Navbar with Black/Charcoal Typography */
+.navbar,
+.navbar-dark,
+.navbar.bg-dark {
+  background-color: #dcdcdc !important; /* Greyish-white bar */
+  border-bottom: 1px solid #b5b5b5;
+
+  --bs-navbar-color: #333333;                /* Charcoal inactive links */
+  --bs-navbar-hover-color: #000000;          /* Pure black hover */
+  --bs-navbar-active-color: #000000;         /* Pure black active link */
+  --bs-navbar-disabled-color: #7a7a7a;
+  --bs-navbar-brand-color: #000000;          /* Pure black brand/title */
+  --bs-navbar-brand-hover-color: #222222;
+  --bs-navbar-toggler-border-color: #8c8c8c;
+
+  /* Invert mobile hamburger icon to black against greyish-white navbar */
+  .navbar-toggler-icon {
+    filter: invert(1) grayscale(100%) brightness(0);
+  }
+
+  /* Notification badge in navbar: Black pill with white text */
+  .badge {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Dropdown inside navbar */
+  .dropdown-menu {
+    background-color: #dcdcdc;
+    border-color: #b5b5b5;
+    --bs-dropdown-color: #000000;
+    --bs-dropdown-link-color: #222222;
+    --bs-dropdown-link-hover-color: #000000;
+    --bs-dropdown-link-hover-bg: #c8c8c8;
+    --bs-dropdown-link-active-color: #ffffff;
+    --bs-dropdown-link-active-bg: #000000;
+  }
+}
+
+/* 2. Buttons & Badges: light grey with black text (outside modal) */
+.btn-primary,
+.btn-info,
+.btn-warning,
+.btn-light,
+.badge.bg-primary,
+.badge.bg-info,
+.badge.bg-warning,
+.badge.bg-light {
+  background-color: #dcdcdc !important;
+  border-color: #dcdcdc !important;
+  color: #000000 !important;
+  --bs-btn-color: #fcfcfc;
+  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-border-color: #ffffff;
+  --bs-btn-hover-color: #000000;
+  --bs-badge-color: #000000;
+}
+
+/* Inside the challenge modal: dark buttons, white text */
+.modal-content .btn-primary,
+.modal-content .btn-info,
+.modal-content .btn-warning,
+.modal-content .btn-light,
+.modal-content .badge {
+  background-color: #2a2a2a !important;
+  border-color: #444444 !important;
+  color: #ffffff !important;
+  --bs-btn-color: #ffffff;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-active-color: #ffffff;
+}
+
+/* Date and other text in the modal's solves table */
+.modal-content .table td,
+.modal-content .table td * {
+  color: #ffffff !important;
+}
+
+
